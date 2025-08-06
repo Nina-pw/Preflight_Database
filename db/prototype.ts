@@ -17,7 +17,8 @@ async function insertData() {
   const userId = await getTestUserId();
 
   await dbClient.insert(todoTable).values({
-    todoText: "Finish reading",
+    title: "Finish reading",
+    description: "Read all chapters in the book",
     userId,
   });
 
@@ -48,7 +49,7 @@ async function updateData() {
 
   await dbClient
     .update(todoTable)
-    .set({ todoText: "AAA" })
+    .set({ title: "Updated title", description: "Updated description" })
     .where(eq(todoTable.id, id));
 
   dbConn.end();
